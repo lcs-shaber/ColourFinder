@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E04133AF2D9EE98000B3BE12 /* ColourFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04133AC2D9EE98000B3BE12 /* ColourFinderApp.swift */; };
-		E04133B02D9EE98000B3BE12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04133AD2D9EE98000B3BE12 /* ContentView.swift */; };
+		E04133B02D9EE98000B3BE12 /* CreateColoureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04133AD2D9EE98000B3BE12 /* CreateColoureView.swift */; };
 		E04133B12D9EE98000B3BE12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E04133A82D9EE98000B3BE12 /* Preview Assets.xcassets */; };
 		E04133B22D9EE98000B3BE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E04133AA2D9EE98000B3BE12 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -19,7 +19,7 @@
 		E04133AA2D9EE98000B3BE12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E04133AB2D9EE98000B3BE12 /* ColourFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ColourFinder.entitlements; sourceTree = "<group>"; };
 		E04133AC2D9EE98000B3BE12 /* ColourFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourFinderApp.swift; sourceTree = "<group>"; };
-		E04133AD2D9EE98000B3BE12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E04133AD2D9EE98000B3BE12 /* CreateColoureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColoureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 		E04133B32D9EE98E00B3BE12 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E04133AD2D9EE98000B3BE12 /* ContentView.swift */,
+				E04133AD2D9EE98000B3BE12 /* CreateColoureView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,7 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04133AF2D9EE98000B3BE12 /* ColourFinderApp.swift in Sources */,
-				E04133B02D9EE98000B3BE12 /* ContentView.swift in Sources */,
+				E04133B02D9EE98000B3BE12 /* CreateColoureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

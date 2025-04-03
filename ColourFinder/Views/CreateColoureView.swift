@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CreateColoureView.swift
 //  ColourFinder
 //
 //  Created by Sophie Haber on 03.04.25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CreateColoureView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,6 +20,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    CreateColoureView()
         .frame(width: 400, height: 400)
 }
