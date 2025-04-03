@@ -11,8 +11,12 @@ struct CreateColoureView: View {
     
     //MARK: Stored properties
     @State var currentHueA = 0.0
+    @State var currentSaturationA = 100.0
+    @State var currentBrightnessA = 100.0
     
-    @State var currentHueB = 0.0
+    @State var currentHueB = 180.0
+    @State var currentSaturationB = 100.0
+    @State var currentBrightnessB = 100.0
     
     //MARK: Computed properties
     var body: some View {
@@ -34,8 +38,12 @@ struct CreateColoureView: View {
               
                     //Slider to choose the colour (hue)
                     Text("Choose your Hue:")
-                    Slider(value: $currentHueA, in: 0...360.0)
+                    Slider(value: $currentHueA, in: 0...180.0)
+                    
+                    Slider(value: $currentSaturationA, in: 0...100.0)
                    
+                    Slider(value: $currentBrightnessA, in: 0...100.0)
+                    
                     HStack{
                         
                         Text("Your first Colour:")
@@ -44,8 +52,8 @@ struct CreateColoureView: View {
                             .fill(
                                 Color(
                                     hue: currentHueA/360.0,
-                                    saturation: 100.0/100.0,
-                                    brightness: 100.0/100.0
+                                    saturation: currentSaturationA/100.0,
+                                    brightness: currentBrightnessA/100.0
                                 )
                             )
                             .frame(width: 100, height: 100)
@@ -65,8 +73,12 @@ struct CreateColoureView: View {
                   
                     //Slider to chose the colour (hue)
                     Text("Choose your Hue:")
-                    Slider(value: $currentHueB, in: 0...360.0)
+                    Slider(value: $currentHueB, in: 180.0...360.0)
+                    
+                    Slider(value: $currentSaturationB, in: 0...100.0)
                    
+                    Slider(value: $currentBrightnessB, in: 0.0...100.0)
+                    
                     HStack{
                         
                         Text("Your second Colour:")
@@ -75,8 +87,8 @@ struct CreateColoureView: View {
                             .fill(
                                 Color(
                                     hue: currentHueB/360.0,
-                                    saturation: 100.0/100.0,
-                                    brightness: 100.0/100.0
+                                    saturation: currentSaturationB/100.0,
+                                    brightness: currentBrightnessB/100.0
                                 )
                             )
                             .frame(width: 100, height: 100)
@@ -99,9 +111,9 @@ struct CreateColoureView: View {
                 Rectangle()
                     .fill(
                         Color(
-                            hue: currentHueA + currentHueB/360.0,
-                            saturation: 100.0/100.0,
-                            brightness: 100.0/100.0
+                            hue: (currentHueA + currentHueB)/360.0,
+                            saturation: (currentSaturationA + currentSaturationB)/100.0,
+                            brightness: (currentBrightnessA + currentBrightnessB)/100.0
                         )
                     )
                     .frame(width: 100, height: 100)
