@@ -21,4 +21,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .frame(width: 400, height: 400)
 }
