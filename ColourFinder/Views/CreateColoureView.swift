@@ -33,117 +33,178 @@ struct CreateColoureView: View {
     //MARK: Computed properties
     var body: some View {
         
-        VStack {
-            
-             Text("Choose your Colour:")
-                 .bold()
-                 .font(.title3)
-                 .padding()
-             
-             Spacer()
-            
-           //Colours to mix
-            HStack {
+        HStack{
+            //Left side
+            VStack {
                 
-                //Colour 1:
-                VStack {
-              
-                    //Slider to choose the colour (hue)
-                    Text("Choose your Hue:")
-                    Slider(value: $currentHueA, in: 0...180.0)
+                 Text("Choose your Colour:")
+                     .bold()
+                     .font(.title3)
+                     .padding()
+                 
+                 Spacer()
+                
+               //Colours to mix
+                HStack {
                     
-                    Slider(value: $currentSaturationA, in: 0...100.0)
-                   
-                    Slider(value: $currentBrightnessA, in: 0...100.0)
-                    
-                    HStack{
-                        
-                        Text("Your first Colour:")
-                        
-                        Rectangle()
-                            .fill(
-                                Color(
-                                    hue: currentHueA/360.0,
-                                    saturation: currentSaturationA/100.0,
-                                    brightness: currentBrightnessA/100.0
-                                )
-                            )
-                            .frame(width: 100, height: 100)
-                    }
+                    //Colour 1:
+                    VStack {
                   
+                        //Slider to choose the colour (hue)
+                        Text("Choose your Hue:")
+                        Slider(value: $currentHueA, in: 0...180.0)
                         
+                        Slider(value: $currentSaturationA, in: 0...100.0)
+                       
+                        Slider(value: $currentBrightnessA, in: 0...100.0)
+                        
+                        HStack{
+                            
+                            Text("Your first Colour:")
+                            
+                            Rectangle()
+                                .fill(
+                                    Color(
+                                        hue: currentHueA/360.0,
+                                        saturation: currentSaturationA/100.0,
+                                        brightness: currentBrightnessA/100.0
+                                    )
+                                )
+                                .frame(width: 100, height: 100)
+                        }
+                      
+                            
+                    }
+                    .padding()
+                    
+                    Text("+")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding()
+                    
+                    //Colour 2:
+                    VStack {
+                      
+                        //Slider to chose the colour (hue)
+                        Text("Choose your Hue:")
+                        Slider(value: $currentHueB, in: 180.0...360.0)
+                        
+                        Slider(value: $currentSaturationB, in: 0...100.0)
+                       
+                        Slider(value: $currentBrightnessB, in: 0.0...100.0)
+                        
+                        HStack{
+                            
+                            Text("Your second Colour:")
+                            
+                            Rectangle()
+                                .fill(
+                                    Color(
+                                        hue: currentHueB/360.0,
+                                        saturation: currentSaturationB/100.0,
+                                        brightness: currentBrightnessB/100.0
+                                    )
+                                )
+                                .frame(width: 100, height: 100)
+                        }
+                      
+                            
+                    }
+                    .padding()
                 }
-                .padding()
                 
-                Text("+")
+                Text("=")
                 .font(.largeTitle)
                 .bold()
                 .padding()
                 
-                //Colour 2:
-                VStack {
-                  
-                    //Slider to chose the colour (hue)
-                    Text("Choose your Hue:")
-                    Slider(value: $currentHueB, in: 180.0...360.0)
+                //Colour 3 (the mix of the two colours you chose):
+                HStack {
                     
-                    Slider(value: $currentSaturationB, in: 0...100.0)
+                    Text("Here is your mixed colour:")
                    
-                    Slider(value: $currentBrightnessB, in: 0.0...100.0)
+                    Rectangle()
+                        .fill(
+                            Color(
+                                hue: (currentHueA + currentHueB)/360.0,
+                                saturation: (currentSaturationA + currentSaturationB)/100.0,
+                                brightness: (currentBrightnessA + currentBrightnessB)/100.0
+                            )
+                        )
+                        .frame(width: 100, height: 100)
                     
-                    HStack{
-                        
-                        Text("Your second Colour:")
-                        
+                    //Button to save the colour
+                    Button {
+                        saveColour()
+                    } label: {
+                            Text("Save Colour")
+                        }
+                    
+                    
+                }
+                .padding()
+               
+
+            }
+            
+            //Right side
+            VStack{
+                
+                //List of created colours
+                List(
+                    //the list iterated over the list "newColour"
+                    newColours
+                    
+                ) { currentColour in
+                    
+                    HStack {
+                        //first rectangle of colour on display
                         Rectangle()
                             .fill(
                                 Color(
-                                    hue: currentHueB/360.0,
-                                    saturation: currentSaturationB/100.0,
-                                    brightness: currentBrightnessB/100.0
+                                    hue: currentColour.firstHue,
+                                    saturation: currentColour.firstSaturation,
+                                    brightness: currentColour.firstBrightness
                                 )
                             )
-                            .frame(width: 100, height: 100)
-                    }
-                  
+                            .frame(width: 50, height: 50)
                         
-                }
-                .padding()
-            }
-            
-            Text("=")
-            .font(.largeTitle)
-            .bold()
-            .padding()
-            
-            //Colour 3 (the mix of the two colours you chose):
-            HStack {
-                
-                Text("Here is your mixed colour:")
-               
-                Rectangle()
-                    .fill(
-                        Color(
-                            hue: (currentHueA + currentHueB)/360.0,
-                            saturation: (currentSaturationA + currentSaturationB)/100.0,
-                            brightness: (currentBrightnessA + currentBrightnessB)/100.0
-                        )
-                    )
-                    .frame(width: 100, height: 100)
-                
-                //Button to save the colour
-                Button {
-                    saveColour()
-                } label: {
-                        Text("Save Colour")
+                        
+                        Text("+")
+                       
+                        //second rectangle of colour on display
+                        Rectangle()
+                            .fill(
+                                Color(
+                                    hue: currentColour.secondHue,
+                                    saturation: currentColour.secondSaturation,
+                                    brightness: currentColour.secondBrightness
+                                )
+                            )
+                            .frame(width: 50, height: 50)
+                        
+                        
+                        Text("=")
+                        
+                        //third rectangle of colour on display (the mixed colour)
+                        Rectangle()
+                            .fill(
+                                Color(
+                                    hue: currentColour.mixedHue,
+                                    saturation: currentColour.mixedSaturation,
+                                    brightness: currentColour.mixedBrightness
+                                )
+                            )
+                            .frame(width: 50, height: 50)
+                        
+                        
                     }
-                
-                
+                }
             }
-            .padding()
-           
-
+            
         }
+
+  
     }
     
     //MARK: Functions
@@ -152,15 +213,15 @@ struct CreateColoureView: View {
         //Save the new colour
         newColours.insert(
             Colour(
-                firstHue: currentHueA,
-                firstSaturation: currentSaturationA,
-                firstBrightness: currentBrightnessA,
-                secondHue: currentHueB,
-                secondSaturation: currentSaturationB,
-                secondBrightness: currentBrightnessB,
-                mixedHue: currentHueA + currentHueB,
-                mixedSaturation: currentSaturationA + currentSaturationB,
-                mixedBrightness: currentBrightnessA + currentBrightnessB
+                firstHue: currentHueA/360.0,
+                firstSaturation: currentSaturationA/100.0,
+                firstBrightness: currentBrightnessA/100.0,
+                secondHue: currentHueB/360.0,
+                secondSaturation: currentSaturationB/100.0,
+                secondBrightness: currentBrightnessB/100.0,
+                mixedHue: (currentHueA + currentHueB)/360.0,
+                mixedSaturation: (currentSaturationA + currentSaturationB)/100.0,
+                mixedBrightness: (currentBrightnessA + currentBrightnessB)/100.0
             ),
             at: 0
         )
