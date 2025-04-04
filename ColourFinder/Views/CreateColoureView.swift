@@ -10,13 +10,25 @@ import SwiftUI
 struct CreateColoureView: View {
     
     //MARK: Stored properties
+    
+    //properties for the sliders for colour A
     @State var currentHueA = 0.0
     @State var currentSaturationA = 100.0
     @State var currentBrightnessA = 100.0
     
+    //properties for the sliders for colour B
     @State var currentHueB = 180.0
     @State var currentSaturationB = 100.0
     @State var currentBrightnessB = 100.0
+    
+    //properties for the mixed colour
+//    @State var mixedHue:
+//    @State var mixedSaturation:
+//    @State var mixedBrightness:
+    
+    
+    //the list of new colours
+    @State var newColours: [Colour] = []
     
     //MARK: Computed properties
     var body: some View {
@@ -30,8 +42,8 @@ struct CreateColoureView: View {
              
              Spacer()
             
+           //Colours to mix
             HStack {
-                
                 
                 //Colour 1:
                 VStack {
@@ -104,10 +116,11 @@ struct CreateColoureView: View {
             .bold()
             .padding()
             
-            
+            //Colour 3 (the mix of the two colours you chose):
             HStack {
                 
-                //Colour 3 (the mix of the two colours you chose):
+                Text("Here is your mixed colour:")
+               
                 Rectangle()
                     .fill(
                         Color(
@@ -118,12 +131,43 @@ struct CreateColoureView: View {
                     )
                     .frame(width: 100, height: 100)
                 
+                //Button to save the colour
+                Button {
+                    saveColour()
+                } label: {
+                        Text("Save Colour")
+                    }
+                
+                
             }
             .padding()
            
 
         }
     }
+    
+    //MARK: Functions
+    func saveColour() {
+        
+        //Save the new colour
+        newColours.insert(
+            Colour(
+                firstHue: currentHueA,
+                firstSaturation: currentSaturationA,
+                firstBrightness: currentBrightnessA,
+                secondHue: currentHueB,
+                secondSaturation: currentSaturationB,
+                secondBrightness: currentBrightnessB,
+                mixedHue: currentHueA + currentHueB,
+                mixedSaturation: currentSaturationA + currentSaturationB,
+                mixedBrightness: currentBrightnessA + currentBrightnessB
+            ),
+            at: 0
+        )
+        //DEBUG: What is in the array now?
+        print(newColours)
+    }
+    
 }
 
 #Preview {
