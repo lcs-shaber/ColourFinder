@@ -17,7 +17,7 @@ struct CreateColoureView: View {
     @State var currentBrightnessA = 100.0
     
     //properties for the sliders for colour B
-    @State var currentHueB = 180.0
+    @State var currentHueB = 0.0
     @State var currentSaturationB = 100.0
     @State var currentBrightnessB = 100.0
     
@@ -52,7 +52,7 @@ struct CreateColoureView: View {
                   
                         //Slider to choose the colour (hue)
                         Text("Choose your Hue:")
-                        Slider(value: $currentHueA, in: 0...180.0)
+                        Slider(value: $currentHueA, in: 0...360.0)
                         
                         Slider(value: $currentSaturationA, in: 0...100.0)
                        
@@ -87,7 +87,7 @@ struct CreateColoureView: View {
                       
                         //Slider to chose the colour (hue)
                         Text("Choose your Hue:")
-                        Slider(value: $currentHueB, in: 180.0...360.0)
+                        Slider(value: $currentHueB, in: 0.0...360.0)
                         
                         Slider(value: $currentSaturationB, in: 0...100.0)
                        
