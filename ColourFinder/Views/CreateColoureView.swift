@@ -54,8 +54,10 @@ struct CreateColoureView: View {
                         Text("Choose your Hue:")
                         Slider(value: $currentHueA, in: 0...360.0)
                         
+                        Text("Choose your Saturation:")
                         Slider(value: $currentSaturationA, in: 0...100.0)
                        
+                        Text("Choose your Brightness:")
                         Slider(value: $currentBrightnessA, in: 0...100.0)
                         
                         HStack{
@@ -89,8 +91,10 @@ struct CreateColoureView: View {
                         Text("Choose your Hue:")
                         Slider(value: $currentHueB, in: 0.0...360.0)
                         
+                        Text("Choose your Saturation:")
                         Slider(value: $currentSaturationB, in: 0...100.0)
                        
+                        Text("Choose your Brightness:")
                         Slider(value: $currentBrightnessB, in: 0.0...100.0)
                         
                         HStack{
