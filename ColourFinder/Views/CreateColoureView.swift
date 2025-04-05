@@ -21,12 +21,14 @@ struct CreateColoureView: View {
     @State var currentSaturationB = 100.0
     @State var currentBrightnessB = 100.0
     
-    
     //the list of new colours
     @State var newColours: [Colour] = []
     
     // what was the outcome of the mixed colour
     @State var currentOutcome: Outcome = .undetermind
+    
+    // Keep track of what the user selected from the picker for filtering
+    @State var selectedOutcomeFilter: Outcome = .undetermind // everything
     
     //MARK: Computed properties
     var body: some View {
@@ -138,6 +140,13 @@ struct CreateColoureView: View {
                             Text("Save Colour")
                         }
                     
+                    //Button to check wether the colour is light or dark
+                    Button {
+                        filterColour()
+                    } label: {
+                        Text("Check whether the colour is a light or dark colour")
+                    }
+                    
                     
                 }
                 .padding()
@@ -148,10 +157,18 @@ struct CreateColoureView: View {
             //Right side
             VStack{
                 
+                //Picker to select or filter through the colours, to select what you want to show
+                Picker("Filtering colours for", selection: $selectedOutcomeFilter) {
+                    //options for the user to pick from
+                    Text("All colours").tag(Outcome.undetermind)
+                    Text("Only dark colours").tag(Outcome.dark)
+                    Text("Only light colours").tag(Outcome.light)
+                } .padding()
+                
                 //List of created colours
                 List(
-                    //the list iterated over the list "newColour"
-                    newColours
+                    //the list iterated over the filtered list
+                    filtering(originalList: newColours, on: selectedOutcomeFilter)
                     
                 ) { currentColour in
                     
@@ -195,6 +212,10 @@ struct CreateColoureView: View {
                             )
                             .frame(width: 50, height: 50)
                         
+                        Spacer()
+                        
+                        //shows if the colour is dark or light
+                        Text(currentColour.outcome.rawValue)
                         
                     }
                 }
@@ -236,17 +257,17 @@ struct CreateColoureView: View {
     }
     
     //function to determine whether the colour is light or dark
-    func filterColour(){
+    func filterColour() {
         
-        if (currentHueA + currentHueB)/360.0 > 0.5 {
-            
-            currentOutcome = .dark
-            print("dark colour")
-            
-        } else {
+        if (currentHueA + currentHueB)/360.0 < 0.5 {
             
             currentOutcome = .light
             print("light colour")
+            
+        } else {
+            
+            currentOutcome = .dark
+            print("dark colour")
         }
     }
     

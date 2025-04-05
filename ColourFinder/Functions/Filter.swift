@@ -19,8 +19,7 @@ func filtering(
     on desiredOutcome: Outcome
 ) -> [Colour] {
     
-    // When the desired outcome is indertemined, just stop
-    // and return the entire original list
+    // When the desired outcome is undertemined, just stop and return the entire original list
     if desiredOutcome == .undetermind {
         return originalList
     }
