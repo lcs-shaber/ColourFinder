@@ -12,6 +12,8 @@
 		E04133B12D9EE98000B3BE12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E04133A82D9EE98000B3BE12 /* Preview Assets.xcassets */; };
 		E04133B22D9EE98000B3BE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E04133AA2D9EE98000B3BE12 /* Assets.xcassets */; };
 		E0FF4DB92DA05C3E00AB37BC /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF4DB82DA05C3E00AB37BC /* Colour.swift */; };
+		E0FF4DBC2DA1700300AB37BC /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF4DBB2DA1700300AB37BC /* Filter.swift */; };
+		E0FF4DBE2DA170A900AB37BC /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF4DBD2DA170A900AB37BC /* Outcome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		E04133AC2D9EE98000B3BE12 /* ColourFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourFinderApp.swift; sourceTree = "<group>"; };
 		E04133AD2D9EE98000B3BE12 /* CreateColoureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColoureView.swift; sourceTree = "<group>"; };
 		E0FF4DB82DA05C3E00AB37BC /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		E0FF4DBB2DA1700300AB37BC /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		E0FF4DBD2DA170A900AB37BC /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		E04133AE2D9EE98000B3BE12 /* ColourFinder */ = {
 			isa = PBXGroup;
 			children = (
+				E0FF4DBA2DA16FE000AB37BC /* Functions */,
 				E04133AC2D9EE98000B3BE12 /* ColourFinderApp.swift */,
 				E04133B42D9EE99500B3BE12 /* Model */,
 				E04133B32D9EE98E00B3BE12 /* Views */,
@@ -84,8 +89,17 @@
 			isa = PBXGroup;
 			children = (
 				E0FF4DB82DA05C3E00AB37BC /* Colour.swift */,
+				E0FF4DBD2DA170A900AB37BC /* Outcome.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E0FF4DBA2DA16FE000AB37BC /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF4DBB2DA1700300AB37BC /* Filter.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +176,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04133AF2D9EE98000B3BE12 /* ColourFinderApp.swift in Sources */,
+				E0FF4DBE2DA170A900AB37BC /* Outcome.swift in Sources */,
+				E0FF4DBC2DA1700300AB37BC /* Filter.swift in Sources */,
 				E04133B02D9EE98000B3BE12 /* CreateColoureView.swift in Sources */,
 				E0FF4DB92DA05C3E00AB37BC /* Colour.swift in Sources */,
 			);

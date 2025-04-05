@@ -21,14 +21,12 @@ struct CreateColoureView: View {
     @State var currentSaturationB = 100.0
     @State var currentBrightnessB = 100.0
     
-    //properties for the mixed colour
-//    @State var mixedHue:
-//    @State var mixedSaturation:
-//    @State var mixedBrightness:
-    
     
     //the list of new colours
     @State var newColours: [Colour] = []
+    
+    // what was the outcome of the mixed colour
+    @State var currentOutcome: Outcome = .undetermind
     
     //MARK: Computed properties
     var body: some View {
@@ -208,26 +206,50 @@ struct CreateColoureView: View {
     }
     
     //MARK: Functions
+    //function to save the colour
     func saveColour() {
         
         //Save the new colour
         newColours.insert(
             Colour(
+                //first colour
                 firstHue: currentHueA/360.0,
                 firstSaturation: currentSaturationA/100.0,
                 firstBrightness: currentBrightnessA/100.0,
+                
+                //second colour
                 secondHue: currentHueB/360.0,
                 secondSaturation: currentSaturationB/100.0,
                 secondBrightness: currentBrightnessB/100.0,
+                
+                //mixed colour
                 mixedHue: (currentHueA + currentHueB)/360.0,
                 mixedSaturation: (currentSaturationA + currentSaturationB)/100.0,
-                mixedBrightness: (currentBrightnessA + currentBrightnessB)/100.0
+                mixedBrightness: (currentBrightnessA + currentBrightnessB)/100.0,
+                
+                outcome: currentOutcome
             ),
             at: 0
         )
         //DEBUG: What is in the array now?
         print(newColours)
     }
+    
+    //function to determine whether the colour is light or dark
+    func filterColour(){
+        
+        if (currentHueA + currentHueB)/360.0 > 0.5 {
+            
+            currentOutcome = .dark
+            print("dark colour")
+            
+        } else {
+            
+            currentOutcome = .light
+            print("light colour")
+        }
+    }
+    
     
 }
 
