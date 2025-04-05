@@ -64,6 +64,7 @@ struct CreateColoureView: View {
                             
                             Text("Your first Colour:")
                             
+                            //Displayes the first colour
                             Rectangle()
                                 .fill(
                                     Color(
@@ -101,6 +102,7 @@ struct CreateColoureView: View {
                             
                             Text("Your second Colour:")
                             
+                            //displays the second colour
                             Rectangle()
                                 .fill(
                                     Color(
@@ -127,6 +129,7 @@ struct CreateColoureView: View {
                     
                     Text("Here is your mixed colour:")
                    
+                    //displays the third colour
                     Rectangle()
                         .fill(
                             Color(
@@ -163,7 +166,7 @@ struct CreateColoureView: View {
                 
                 //List of created colours
                 List(
-                    //the list iterated over the filtered list
+                    //the list iterates over the filtered list
                     filtering(originalList: newColours, on: selectedOutcomeFilter)
                     
                 ) { currentColour in
