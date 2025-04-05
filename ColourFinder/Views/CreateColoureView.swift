@@ -126,9 +126,9 @@ struct CreateColoureView: View {
                     Rectangle()
                         .fill(
                             Color(
-                                hue: (currentHueA + currentHueB)/360.0,
-                                saturation: (currentSaturationA + currentSaturationB)/100.0,
-                                brightness: (currentBrightnessA + currentBrightnessB)/100.0
+                                hue: (currentHueA + currentHueB)/720.0,
+                                saturation: (currentSaturationA + currentSaturationB)/200.0,
+                                brightness: (currentBrightnessA + currentBrightnessB)/200.0
                             )
                         )
                         .frame(width: 100, height: 100)
@@ -139,14 +139,6 @@ struct CreateColoureView: View {
                     } label: {
                             Text("Save Colour")
                         }
-                    
-                    //Button to check wether the colour is light or dark
-                    Button {
-                        filterColour()
-                    } label: {
-                        Text("Check whether the colour is a light or dark colour")
-                    }
-                    
                     
                 }
                 .padding()
@@ -229,48 +221,41 @@ struct CreateColoureView: View {
     //MARK: Functions
     //function to save the colour
     func saveColour() {
+        // Calculate the mixed values
+        let mixedHue = (currentHueA + currentHueB) / 720.0
+        let mixedSaturation = (currentSaturationA + currentSaturationB) / 200.0
+        let mixedBrightness = (currentBrightnessA + currentBrightnessB) / 200.0
         
-        //Save the new colour
+        // Determine outcome
+        if mixedHue < 0.5 {
+            currentOutcome = .light
+            print("light colour")
+        } else {
+            currentOutcome = .dark
+            print("dark colour")
+        }
+
+        // Save the new colour
         newColours.insert(
             Colour(
-                //first colour
-                firstHue: currentHueA/360.0,
-                firstSaturation: currentSaturationA/100.0,
-                firstBrightness: currentBrightnessA/100.0,
-                
-                //second colour
-                secondHue: currentHueB/360.0,
-                secondSaturation: currentSaturationB/100.0,
-                secondBrightness: currentBrightnessB/100.0,
-                
-                //mixed colour
-                mixedHue: (currentHueA + currentHueB)/360.0,
-                mixedSaturation: (currentSaturationA + currentSaturationB)/100.0,
-                mixedBrightness: (currentBrightnessA + currentBrightnessB)/100.0,
-                
+                firstHue: currentHueA / 360.0,
+                firstSaturation: currentSaturationA / 100.0,
+                firstBrightness: currentBrightnessA / 100.0,
+                secondHue: currentHueB / 360.0,
+                secondSaturation: currentSaturationB / 100.0,
+                secondBrightness: currentBrightnessB / 100.0,
+                mixedHue: mixedHue,
+                mixedSaturation: mixedSaturation,
+                mixedBrightness: mixedBrightness,
                 outcome: currentOutcome
             ),
             at: 0
         )
-        //DEBUG: What is in the array now?
+        // DEBUG: What is in the array now?
         print(newColours)
+
     }
-    
-    //function to determine whether the colour is light or dark
-    func filterColour() {
-        
-        if (currentHueA + currentHueB)/360.0 < 0.5 {
-            
-            currentOutcome = .light
-            print("light colour")
-            
-        } else {
-            
-            currentOutcome = .dark
-            print("dark colour")
-        }
-    }
-    
+
     
 }
 
