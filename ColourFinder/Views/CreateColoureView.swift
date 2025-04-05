@@ -161,7 +161,7 @@ struct CreateColoureView: View {
                     //options for the user to pick from
                     Text("All colours").tag(Outcome.undetermind)
                     Text("Only dark colours").tag(Outcome.dark)
-                    Text("Only light colours").tag(Outcome.light)
+                    Text("Only bright colours").tag(Outcome.bright)
                 } .padding()
                 
                 //List of created colours
@@ -213,7 +213,7 @@ struct CreateColoureView: View {
                         
                         Spacer()
                         
-                        //shows if the colour is dark or light
+                        //shows if the colour is dark or bright
                         Text(currentColour.outcome.rawValue)
                         
                     }
@@ -235,8 +235,8 @@ struct CreateColoureView: View {
         
         // Determine outcome
         if mixedHue < 0.5 {
-            currentOutcome = .light
-            print("light colour")
+            currentOutcome = .bright
+            print("bright colour")
         } else {
             currentOutcome = .dark
             print("dark colour")

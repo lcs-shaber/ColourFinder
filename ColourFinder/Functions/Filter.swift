@@ -10,7 +10,7 @@ import Foundation
 // Inputs (paramaters)
 //      - the original list
 //      - what outcome the user wants included
-//          i.e.: undetermined (all results), light, dark
+//          i.e.: undetermined (all results), bright, dark
 //
 // Output:
 //      - the filtered list

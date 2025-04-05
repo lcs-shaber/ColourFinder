@@ -26,7 +26,7 @@ struct Colour: Identifiable {
     let mixedSaturation: Double
     let mixedBrightness: Double
     
-    //Whether the colour is dark or light
+    //Whether the colour is dark or bright
     let outcome: Outcome
     
 }

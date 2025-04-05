@@ -10,6 +10,6 @@ import Foundation
 // Traks what is happening with a the given colour
 enum Outcome: String {
     case undetermind = " "
-    case light = "🔆"
+    case bright = "🔆"
     case dark = "🌚"
 }
